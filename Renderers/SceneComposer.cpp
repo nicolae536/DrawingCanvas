@@ -2,7 +2,7 @@
 
 #include "pch.h"
 #include "SceneComposer.h"
-#include "RgbaInt.h";
+#include "RgbaInt.h"
 
 using namespace DrawingCanvas;
 using namespace Microsoft::WRL;
@@ -58,7 +58,7 @@ void SceneComposer::UpdateInk(Windows::Foundation::Collections::IVectorView<Wind
 		{
 			strokesBoundingRect.Union(inkStroke->BoundingRect);
 		}
-		inkStroke->DrawingAttributes->Pen
+		//inkStroke->DrawingAttributes->Pen
 		//auto currentAttributes = inkStroke->DrawingAttributes;
 		//auto drawingAttributes = ref new Windows::UI::Input::Inking::InkDrawingAttributes();
 		//auto color = new Common::RgbaInt(inkStroke->DrawingAttributes->Color);

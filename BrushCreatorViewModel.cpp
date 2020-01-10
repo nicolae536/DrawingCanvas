@@ -1,56 +1,44 @@
 #include "pch.h"
 #include "BrushCreatorViewModel.h"
+#include "StringUtils.h"
 
+using namespace Models;
 ViewModels::BrushCreatorViewModel::BrushCreatorViewModel()
-	: FilteredBrushes(),
-	AllBrushes(),
-	SearchTerm(),
-	SelectedBrushIndex(-1)
+	: ActiveBrushSize(ref new BrushSize(5, 5)),
+	ActiveBrush(),
+	AllBrushesList(),
+	FilteredBrushes(),
+	FilterValue()
 {
+	ActiveBrush->UpdateSize(ActiveBrushSize);
 }
 
-void ViewModels::BrushCreatorViewModel::CreateBrush()
-{
-	auto newBrush = ref new Models::BrushData();
-	AllBrushes->Append(newBrush);
-	SearchTerm = "";
-	ApplyFilter();
-}
+void ViewModels::BrushCreatorViewModel::AddNewBrush() {
+	BrushData^ brush = ref new BrushData(
+		ActiveBrushSize,
+		WinInk::PenTipShape::Circle,
+		WinNumerics::float3x2()
+	);
+	AllBrushesList->Append(brush);
+	FilterValue = "";
 
-int ViewModels::BrushCreatorViewModel::GetSelectedBrushIndex()
-{
-	return SelectedBrushIndex;
-}
-
-void ViewModels::BrushCreatorViewModel::SelectBrush(int index)
-{
-	auto brush = VmBrushes->GetAt(index);
-
-	if (brush != nullptr) {
-		ActiveBrush = safe_cast<Models::BrushData^>(brush);
-	}
-}
-
-void ViewModels::BrushCreatorViewModel::FilterBrushes(Platform::String^ searchTerm)
-{
-	SearchTerm = ref new Platform::String(searchTerm);
-	ApplyFilter();
 }
 
 void ViewModels::BrushCreatorViewModel::ApplyFilter()
 {
-	if (SearchTerm->IsEmpty()) {
-		FilteredBrushes = AllBrushes;
+	if (FilterValue == "") {
+		FilteredBrushes = AllBrushesList;
 		return;
 	}
 
 	FilteredBrushes = ref new Platform::Collections::Vector<Models::BrushData^>();
-	auto searchTerm = SearchTerm->Data();
-	for (auto brush : AllBrushes) {
-		auto brushName = brush->GetName();
-		int foundIndex = brushName->find(searchTerm);
-		if (foundIndex >= 0 && foundIndex <= brushName->size()) {
+	std::wstring filter = StringUtils::PlatformStringToWString(FilterValue);
+
+	for (auto brush : AllBrushesList) {
+		auto brushName = StringUtils::PlatformStringToWString(brush->GetName());
+		if (brushName.find(filter)) {
 			FilteredBrushes->Append(brush);
 		}
 	}
 }
+

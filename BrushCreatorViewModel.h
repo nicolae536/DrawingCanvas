@@ -3,32 +3,31 @@
 #include "BrushData.h"
 
 namespace ViewModels {
-	ref class BrushCreatorViewModel
+	ref class BrushCreatorViewModel sealed
 	{
 	public:
-		Models::BrushData^ ActiveBrush;
-		Platform::String^ SearchTerm;
+		BrushCreatorViewModel();
 
-		property Windows::Foundation::Collections::IObservableVector<Models::BrushData^>^ VmBrushes
+		void AddNewBrush();
+
+		/*property Platform::Collections::Vector<Models::BrushData^>^ VmFilteredBrushes {
+			Platform::Collections::Vector<Models::BrushData^>^ get() {
+				return this->FilteredBrushes;
+			}
+		}*/
+
+		property Platform::String^ VmFilter
 		{
-			Windows::Foundation::Collections::IObservableVector<Models::BrushData^>^ get()
-			{
-				if (FilteredBrushes == nullptr) {
-					FilteredBrushes = ref new Platform::Collections::Vector<Models::BrushData^>();
-				};
-				return FilteredBrushes;
+			Platform::String^ get() {
+				return this->FilterValue;
 			}
 		}
 	private:
-		Platform::Collections::Vector<Models::BrushData^>^ AllBrushes;
+		Models::BrushSize^ ActiveBrushSize;
+		Models::BrushData^ ActiveBrush;
+		Platform::Collections::Vector<Models::BrushData^>^ AllBrushesList;
 		Platform::Collections::Vector<Models::BrushData^>^ FilteredBrushes;
-		int SelectedBrushIndex;
-	public:
-		BrushCreatorViewModel();
-		void CreateBrush();
-		int GetSelectedBrushIndex();
-		void SelectBrush(int index);
-		void FilterBrushes(Platform::String^ searchTerm);
+		Platform::String^ FilterValue;
 	private:
 		void ApplyFilter();
 	};

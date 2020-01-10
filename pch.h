@@ -34,3 +34,4 @@
 
 const Windows::UI::Color CanvasBackgroundColor = Windows::UI::Colors::White;
 namespace WinInk = Windows::UI::Input::Inking;
+namespace WinNumerics = Windows::Foundation::Numerics;

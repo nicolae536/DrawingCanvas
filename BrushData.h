@@ -8,20 +8,26 @@ namespace Models {
 	{
 	public:
 		BrushData();
-		BrushData(const BrushSize size, const Windows::UI::Input::Inking::PenTipShape penTipShape, const Windows::Foundation::Numerics::float3x2 penTipTransform);
+		BrushData(BrushSize^ size,
+			WinInk::PenTipShape penTipShape,
+			WinNumerics::float3x2 penTipTransform
+		);
+		
+		Platform::String^ GetName();
+		BrushSize^ GetBrushSize();
+		WinInk::PenTipShape GetPenTipShape();
+		WinNumerics::float3x2 GetPenTipTransform();
 
-		std::shared_ptr<std::wstring> GetName();
-
-		void UpdateSize(BrushSize size);
-		void UpdatePenTipShape(Windows::UI::Input::Inking::PenTipShape penTipShape);
-		void UpdatePenTipTransform(Windows::Foundation::Numerics::float3x2 penTipTransform);
+		void UpdateSize(BrushSize^ size);
+		void UpdatePenTipShape(WinInk::PenTipShape penTipShape);
+		void UpdatePenTipTransform(WinNumerics::float3x2 penTipTransform);
 
 		Windows::Foundation::Size GetInkSize();
 	private:
-		std::shared_ptr<std::wstring> _Name;
-		BrushSize^ Size;
-		Windows::UI::Input::Inking::PenTipShape PenTipShape;
-		Windows::Foundation::Numerics::float3x2 PenTipTransform;
+		std::wstring _Name;
+		Models::BrushSize^ Size;
+		WinInk::PenTipShape PenTipShape;
+		WinNumerics::float3x2 PenTipTransform;
 	};
 };
 

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "BrushSize.h"
 
-using namespace Models;
+using namespace DrawingCanvas;
 
 
 BrushSize::BrushSize(float width, float height)
@@ -10,22 +10,22 @@ BrushSize::BrushSize(float width, float height)
 {
 }
 
-float Models::BrushSize::GetWidth()
+float BrushSize::GetWidth()
 {
 	return Width;
 }
 
-float Models::BrushSize::GetHeight()
+float BrushSize::GetHeight()
 {
 	return Height;
 }
 
-void Models::BrushSize::SetWidth(float width)
+void BrushSize::SetWidth(float width)
 {
 	Width = width;
 }
 
-void Models::BrushSize::SetHeight(float height)
+void BrushSize::SetHeight(float height)
 {
 	Height = height;
 }

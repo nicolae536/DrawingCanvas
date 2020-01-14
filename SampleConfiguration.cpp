@@ -17,5 +17,6 @@ using namespace DrawingCanvas;
 
 Platform::Array<Scenario>^ MainPage::scenariosInner = ref new Platform::Array<Scenario>
 {
-    { "Custom Dry Scenario", "DrawingCanvas.DrawingCanvasBoard" }
+    { "Custom Dry Scenario", "DrawingCanvas.DrawingCanvasBoard" },
+    { "Brush Creator", "DrawingCanvas.BrushCreator" },
 };

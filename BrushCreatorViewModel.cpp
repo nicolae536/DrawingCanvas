@@ -2,40 +2,41 @@
 #include "BrushCreatorViewModel.h"
 #include "StringUtils.h"
 
-using namespace Models;
-ViewModels::BrushCreatorViewModel::BrushCreatorViewModel()
+BrushCreatorViewModel::BrushCreatorViewModel()
 	: ActiveBrushSize(ref new BrushSize(5, 5)),
-	ActiveBrush(),
-	AllBrushesList(),
-	FilteredBrushes(),
-	FilterValue()
+	AllBrushesList(ref new Platform::Collections::Vector<BrushData^>()),
+	FilteredBrushes(ref new Platform::Collections::Vector<BrushData^>()),
+	FilterValue(L"")
 {
-	ActiveBrush->UpdateSize(ActiveBrushSize);
 }
 
-void ViewModels::BrushCreatorViewModel::AddNewBrush() {
+void BrushCreatorViewModel::AddNewBrush() {
 	BrushData^ brush = ref new BrushData(
+		L"New brush",
 		ActiveBrushSize,
 		WinInk::PenTipShape::Circle,
 		WinNumerics::float3x2()
 	);
 	AllBrushesList->Append(brush);
 	FilterValue = "";
-
+	ActiveBrush = brush;
+	ApplyFilter();
 }
 
-void ViewModels::BrushCreatorViewModel::ApplyFilter()
+void BrushCreatorViewModel::ApplyFilter()
 {
+	FilteredBrushes->Clear();
 	if (FilterValue == "") {
-		FilteredBrushes = AllBrushesList;
+		for (auto b : AllBrushesList) {
+			FilteredBrushes->Append(b);
+		}
 		return;
 	}
 
-	FilteredBrushes = ref new Platform::Collections::Vector<Models::BrushData^>();
 	std::wstring filter = StringUtils::PlatformStringToWString(FilterValue);
 
 	for (auto brush : AllBrushesList) {
-		auto brushName = StringUtils::PlatformStringToWString(brush->GetName());
+		auto brushName = StringUtils::PlatformStringToWString(brush->Name);
 		if (brushName.find(filter)) {
 			FilteredBrushes->Append(brush);
 		}

@@ -6,6 +6,7 @@
 #pragma once
 
 #include "BrushCreator.g.h"
+#include "BrushCreatorViewModel.h"
 
 namespace DrawingCanvas
 {
@@ -17,5 +18,16 @@ namespace DrawingCanvas
 	{
 	public:
 		BrushCreator();
+
+		property BrushCreatorViewModel^ Vm {
+			BrushCreatorViewModel^ get() {
+				return this->ViewModel;
+			}
+		};
+
+		void CreateBrush(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+	private:
+		void InitializeBindings();
+		BrushCreatorViewModel^ ViewModel;
 	};
 }

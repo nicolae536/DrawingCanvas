@@ -2,18 +2,25 @@
 #include <WindowsNumerics.h>
 #include <string.h>
 #include "BrushSize.h"
+#include "StringUtils.h"
 
-namespace Models {
-	ref class BrushData sealed
+namespace DrawingCanvas {
+	public ref class BrushData sealed
 	{
 	public:
 		BrushData();
-		BrushData(BrushSize^ size,
+		BrushData(
+			Platform::String^ name,
+			BrushSize^ size,
 			WinInk::PenTipShape penTipShape,
 			WinNumerics::float3x2 penTipTransform
 		);
-		
-		Platform::String^ GetName();
+
+		property Platform::String^ Name {
+			Platform::String^ get() {
+				return StringUtils::WStringToPlatformString(_Name);
+			}
+		};
 		BrushSize^ GetBrushSize();
 		WinInk::PenTipShape GetPenTipShape();
 		WinNumerics::float3x2 GetPenTipTransform();
@@ -25,9 +32,8 @@ namespace Models {
 		Windows::Foundation::Size GetInkSize();
 	private:
 		std::wstring _Name;
-		Models::BrushSize^ Size;
+		BrushSize^ Size;
 		WinInk::PenTipShape PenTipShape;
 		WinNumerics::float3x2 PenTipTransform;
 	};
 };
-

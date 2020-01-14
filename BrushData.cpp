@@ -2,9 +2,9 @@
 #include "BrushData.h"
 #include "StringUtils.h"
 
-using namespace Models;
+using namespace DrawingCanvas;
 
-Models::BrushData::BrushData()
+BrushData::BrushData()
 	:
 	_Name(),
 	Size(ref new BrushSize(5, 5)),
@@ -13,51 +13,50 @@ Models::BrushData::BrushData()
 	PenTipShape = WinInk::PenTipShape::Circle;
 }
 
-Models::BrushData::BrushData(BrushSize^ size, const Windows::UI::Input::Inking::PenTipShape penTipShape, const Windows::Foundation::Numerics::float3x2 penTipTransform)
+BrushData::BrushData(
+	Platform::String^ name,
+	BrushSize^ size, 
+	const Windows::UI::Input::Inking::PenTipShape penTipShape, 
+	const Windows::Foundation::Numerics::float3x2 penTipTransform)
 	:
-	_Name(),
+	_Name(StringUtils::PlatformStringToWString(name)),
 	Size(size),
 	PenTipShape(penTipShape),
 	PenTipTransform(penTipTransform)
 {
 }
 
-Platform::String^ Models::BrushData::GetName()
-{
-	return StringUtils::WStringToPlatformString(_Name);
-}
-
-BrushSize^ Models::BrushData::GetBrushSize()
+BrushSize^ BrushData::GetBrushSize()
 {
 	return Size;
 }
 
-WinInk::PenTipShape Models::BrushData::GetPenTipShape()
+WinInk::PenTipShape BrushData::GetPenTipShape()
 {
 	return PenTipShape;
 }
 
-WinNumerics::float3x2 Models::BrushData::GetPenTipTransform()
+WinNumerics::float3x2 BrushData::GetPenTipTransform()
 {
 	return PenTipTransform;
 }
 
-void Models::BrushData::UpdateSize(BrushSize^ size)
+void BrushData::UpdateSize(BrushSize^ size)
 {
 	Size = size;
 }
 
-void Models::BrushData::UpdatePenTipShape(Windows::UI::Input::Inking::PenTipShape penTipShape)
+void BrushData::UpdatePenTipShape(Windows::UI::Input::Inking::PenTipShape penTipShape)
 {
 	PenTipShape = penTipShape;
 }
 
-void Models::BrushData::UpdatePenTipTransform(Windows::Foundation::Numerics::float3x2 penTipTransform)
+void BrushData::UpdatePenTipTransform(Windows::Foundation::Numerics::float3x2 penTipTransform)
 {
 	PenTipTransform = PenTipTransform;
 }
 
-Windows::Foundation::Size Models::BrushData::GetInkSize()
+Windows::Foundation::Size BrushData::GetInkSize()
 {
 	return Windows::Foundation::Size(Size->GetWidth(), Size->GetHeight());
 }

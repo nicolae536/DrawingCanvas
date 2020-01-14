@@ -14,10 +14,30 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Column="0">
-                <TextBox Grid.Row="0" Header="Brushes" x:Name="brushSearch"/>
-                <ListBox x:Name="brushesList" DataContext="{x:Bind }"/>
-            </StackPanel>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"  Orientation="Horizontal">
+                    <TextBox Width="100"  Grid.Row="0" Margin="0,0,12,0"  Header="Brushes" Text="{x:Bind Vm.VmFilter}"  x:Name="brushSearch" VerticalAlignment="Bottom"/>
+                    <Button Content="Add new" VerticalAlignment="Bottom" Click="CreateBrush"/>
+                </StackPanel>
+                <ListView Grid.Row="1" x:Name="brushesList" ItemsSource="{x:Bind Vm.VmFilteredBrushes}"
+                          x:DefaultBindMode="OneWay">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="SingleLineDataTemplate" x:DataType="local:BrushData">
+                            <StackPanel Orientation="Horizontal" Height="44" Padding="12">
+                                <TextBlock Text="{x:Bind Name}" 
+                                           VerticalAlignment="Center" 
+                                           Style="{ThemeResource BaseTextBlockStyle}" 
+                                           Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" 
+                                           Margin="12,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

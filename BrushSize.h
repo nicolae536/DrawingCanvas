@@ -1,7 +1,7 @@
 #pragma once
 
-namespace Models {
-	ref class BrushSize sealed {
+namespace DrawingCanvas {
+	public ref class BrushSize sealed {
 	public:
 		BrushSize(float width, float height);
 		float GetWidth();

@@ -26,6 +26,9 @@
     <Filter Include="ViewModels">
       <UniqueIdentifier>{30c2020f-0b3a-4cf8-9001-dd45a275792c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Services">
+      <UniqueIdentifier>{b3483630-dc2e-479f-9120-190cdaa5bcaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -60,6 +63,9 @@
     </ClCompile>
     <ClCompile Include="StringUtils.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="BushService.cpp">
+      <Filter>Services</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="StringUtils.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="BushService.h">
+      <Filter>Services</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

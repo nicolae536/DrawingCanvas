@@ -165,6 +165,7 @@
     <ClInclude Include="BrushCreatorViewModel.h" />
     <ClInclude Include="BrushData.h" />
     <ClInclude Include="BrushSize.h" />
+    <ClInclude Include="BushService.h" />
     <ClInclude Include="Common\DeviceResources.h" />
     <ClInclude Include="Common\DirectXHelper.h" />
     <ClInclude Include="Common\InkEventLogger.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="BrushCreatorViewModel.cpp" />
     <ClCompile Include="BrushData.cpp" />
     <ClCompile Include="BrushSize.cpp" />
+    <ClCompile Include="BushService.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="Common\InkEventLogger.cpp" />
     <ClCompile Include="Controls\ContextMenuFlyout.xaml.cpp">

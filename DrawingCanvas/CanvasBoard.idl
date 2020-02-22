@@ -1,0 +1,8 @@
+namespace DrawingCanvas
+{
+    [default_interface]
+    runtimeclass CanvasBoard : Windows.UI.Xaml.Controls.Page
+    {
+        CanvasBoard();
+    }
+}

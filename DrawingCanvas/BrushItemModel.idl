@@ -1,0 +1,13 @@
+namespace DrawingCanvas
+{
+    [bindable]
+    [default_interface]
+    runtimeclass BrushItemModel 
+    {
+        BrushItemModel();
+
+        String Name{ get; set; };
+
+        Windows.UI.Xaml.Media.Imaging.BitmapImage Preview{ get; set; };
+    }
+}

@@ -1,0 +1,20 @@
+import "BrushDataModel.idl";
+import "BrushSizeModel.idl";
+
+namespace DrawingCanvas
+{
+    [bindable]
+    [default_interface]
+    runtimeclass BrushCreatorViewModel : Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        BrushCreatorViewModel();
+
+        Windows.Foundation.Collections.IObservableVector<BrushDataModel> VmFilteredBrushes{ get; };
+
+        String VmFilter;
+
+        void CreateBrush();
+
+        BrushSizeModel BrushSize{ get; };
+    }
+}

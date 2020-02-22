@@ -1,0 +1,12 @@
+import "BrushItemModel.idl";
+
+namespace DrawingCanvas
+{
+    [default_interface]
+    runtimeclass BrushesList : Windows.UI.Xaml.Controls.Page
+    {
+        BrushesList();
+
+        Windows.Foundation.Collections.IObservableVector<BrushItemModel> Brushes{ get; };
+    }
+}

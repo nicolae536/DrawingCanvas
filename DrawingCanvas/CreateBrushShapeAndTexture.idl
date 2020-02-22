@@ -1,0 +1,8 @@
+namespace DrawingCanvas
+{
+    [default_interface]
+    runtimeclass CreateBrushShapeAndTexture : Windows.UI.Xaml.Controls.Page
+    {
+        CreateBrushShapeAndTexture();
+    }
+}

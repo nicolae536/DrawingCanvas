@@ -1,0 +1,12 @@
+namespace DrawingCanvas
+{
+    [bindable]
+    [default_interface]
+    runtimeclass BrushSizeModel : Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        BrushSizeModel();
+        BrushSizeModel(Single width, Single height);
+        Single Width;
+        Single Height;
+    }
+}

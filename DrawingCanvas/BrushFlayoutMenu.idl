@@ -1,0 +1,8 @@
+namespace DrawingCanvas
+{
+    [default_interface]
+    runtimeclass BrushFlayoutMenu : Windows.UI.Xaml.Controls.UserControl
+    {
+        BrushFlayoutMenu();
+    }
+}

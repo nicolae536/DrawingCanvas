@@ -1,0 +1,22 @@
+import "BrushSizeModel.idl";
+
+namespace DrawingCanvas
+{
+    [bindable]
+    [default_interface]
+    runtimeclass BrushDataModel : Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        BrushDataModel();
+        BrushDataModel(
+            String id,
+            String name,
+            BrushSizeModel size,
+            Windows.UI.Input.Inking.PenTipShape penTipShape
+        );
+
+        String Id;
+        String Name;
+        BrushSizeModel Size;
+        Windows.UI.Input.Inking.PenTipShape PenTipShape;
+    }
+}

@@ -17,17 +17,22 @@ winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Storage::StorageFile
 	return filePicker.PickSingleFileAsync();	
 }
 
-winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage> PlatformServices::FilePicker::PickImageAsync()
+winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap> PlatformServices::FilePicker::PickImageAsync()
 {
-	winrt::Windows::Storage::StorageFile storageFile = co_await filePicker.PickSingleFileAsync();
+	// TODO modify this to use corutines recheck intellisense when it gets better
+	winrt::Windows::Storage::StorageFile storageFile = filePicker.PickSingleFileAsync().get();
 
 	if (storageFile != nullptr) {
-		auto fileStream = co_await storageFile.OpenAsync(winrt::Windows::Storage::FileAccessMode::Read);
+		auto fileStream = storageFile.OpenAsync(winrt::Windows::Storage::FileAccessMode::ReadWrite).get();
 		winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage bitmapImage;
-		bitmapImage.DecodePixelHeight(100);
-		bitmapImage.DecodePixelWidth(100);
-		co_await bitmapImage.SetSourceAsync(fileStream);
-		co_return bitmapImage;
+		bitmapImage.DecodePixelWidth(200);
+		bitmapImage.SetSourceAsync(fileStream).get();
+
+		winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap wb(bitmapImage.PixelWidth(), bitmapImage.PixelHeight());
+		fileStream.Seek(0);
+		wb.SetSourceAsync(fileStream);
+
+		co_return wb;
 	}
 
 	co_return nullptr;

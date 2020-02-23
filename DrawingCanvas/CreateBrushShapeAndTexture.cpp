@@ -17,13 +17,14 @@ namespace winrt::DrawingCanvas::implementation
 
     winrt::Windows::Foundation::IAsyncAction CreateBrushShapeAndTexture::PickFile(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
     {
-        winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage storageFile = co_await filePicker.PickImageAsync();
+        winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap storageFile = co_await filePicker.PickImageAsync();
 
         if (storageFile == nullptr) {
             co_return;
         }
 
         auto piselWidth = { storageFile.PixelWidth() };
-        //auto p{ bitmap.PixelBuffer().data() };
+        // auto p{ bitmap.PixelBuffer().data() };
+        // https://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ff10c14-51d4-4760-afe6-091624adc532/sample-code-for-making-a-bitmapimage-grayscale?forum=winappswithcsharp
     }
 }

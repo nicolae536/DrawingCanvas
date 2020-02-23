@@ -11,7 +11,7 @@ namespace PlatformServices {
 
 		winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Storage::StorageFile> PickFileAsync();
 		
-		winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage> PickImageAsync();		
+		winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap> PickImageAsync();
 	private:
 		winrt::Windows::Storage::Pickers::FileOpenPicker filePicker;
 	};

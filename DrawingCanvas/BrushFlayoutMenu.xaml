@@ -26,7 +26,7 @@
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;"/>
             </Button>
         </StackPanel>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="0 15 0 0">
             <Frame x:Name="TabContent" 
                    RelativePanel.AlignTopWithPanel="True" 
                    RelativePanel.Above="StatusPanel" 

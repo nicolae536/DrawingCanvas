@@ -51,6 +51,15 @@
     <ClCompile Include="DrawingQueue.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="FilePicker.cpp">
+      <Filter>PlatformServices</Filter>
+    </ClCompile>
+    <ClCompile Include="PixalValue.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageHelpers.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -62,6 +71,15 @@
       <Filter>Rendering</Filter>
     </ClInclude>
     <ClInclude Include="DrawingQueue.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePicker.h">
+      <Filter>PlatformServices</Filter>
+    </ClInclude>
+    <ClInclude Include="PixalValue.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageHelpers.h">
       <Filter>Rendering</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,6 +133,9 @@
     </Filter>
     <Filter Include="Assets\Icons">
       <UniqueIdentifier>{5280c093-f763-4cf8-9763-5b4472dd3ac0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlatformServices">
+      <UniqueIdentifier>{159e18c8-35d4-428b-9205-3490eec6bb9f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

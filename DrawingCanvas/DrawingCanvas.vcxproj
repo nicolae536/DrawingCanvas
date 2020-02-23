@@ -137,6 +137,8 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="DrawingQueue.h" />
+    <ClInclude Include="FilePicker.h" />
+    <ClInclude Include="ImageHelpers.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.h">
       <DependentUpon>App.xaml</DependentUpon>
@@ -144,6 +146,7 @@
     <ClInclude Include="MainPage.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="PixalValue.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +222,8 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="DrawingQueue.cpp" />
+    <ClCompile Include="FilePicker.cpp" />
+    <ClCompile Include="ImageHelpers.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -229,6 +234,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="PixalValue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl">

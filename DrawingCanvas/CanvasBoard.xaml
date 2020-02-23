@@ -36,16 +36,15 @@
                         </Button.Flyout>
                     </Button>
                 </Grid>
-
-                <Grid Grid.Row="1" Background="White">
-                    <ScrollViewer>
-                        <canvas:CanvasControl x:Name="canvasControl"                                                   
+            </Grid>
+            <Grid Grid.Row="1" Background="White">
+                <ScrollViewer>
+                    <canvas:CanvasControl x:Name="canvasControl"                                                   
                                           Draw="CanvasControl_Draw"
                                           PointerPressed="CanvasControl_PointerPressed" 
                                           PointerMoved="CanvasControl_PointerMoved"
                                           PointerReleased="CanvasControl_PointerReleased"/>
-                    </ScrollViewer>
-                </Grid>
+                </ScrollViewer>
             </Grid>
         </Grid>
     </Grid>

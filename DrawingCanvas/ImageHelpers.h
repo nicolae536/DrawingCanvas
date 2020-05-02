@@ -8,6 +8,6 @@ namespace Rendering {
 	Rendering::PixalValue GetPixel(WriteableBitmap const& bitmap, int const x, int const y);
 	void SetPixel(WriteableBitmap const& bitmap, int const x, int const y, winrt::Windows::UI::Color col);
 
-	WriteableBitmap ConvertToGrayScale(WriteableBitmap const & bitmap);
+	//WriteableBitmap ConvertToGrayScale(WriteableBitmap const & bitmap);
 }
 

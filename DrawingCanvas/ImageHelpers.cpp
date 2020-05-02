@@ -36,11 +36,11 @@ void Rendering::SetPixel(WriteableBitmap const& bitmap, int const x, int const y
 	*(pixel_address + 3) = col.A;
 }
 
-WriteableBitmap Rendering::ConvertToGrayScale(WriteableBitmap const& bitmap)
-{
-	auto p{ bitmap.PixelBuffer().data() };
-	//bitmap.PixelBuffer().
-	// https://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ff10c14-51d4-4760-afe6-091624adc532/sample-code-for-making-a-bitmapimage-grayscale?forum=winappswithcsharp
-
-	/*for (int i =0; i < *p)*/
-}
+//WriteableBitmap Rendering::ConvertToGrayScale(WriteableBitmap const& bitmap)
+//{
+//	auto p{ bitmap.PixelBuffer().data() };
+//	//bitmap.PixelBuffer().
+//	// https://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ff10c14-51d4-4760-afe6-091624adc532/sample-code-for-making-a-bitmapimage-grayscale?forum=winappswithcsharp
+//
+//	/*for (int i =0; i < *p)*/
+//}

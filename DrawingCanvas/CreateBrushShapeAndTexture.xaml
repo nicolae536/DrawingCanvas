@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.ColumnSpan="3">
@@ -35,16 +36,21 @@
             <Grid.ColumnDefinitions>
                  <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0"                     
-                    Click="PickFile"
+            <Grid Grid.Row="0"                     
                     Grid.Column="0" 
+                    Margin="0 0 0 10"
+                    >
+                <Button Click="PickBrushShape"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     HorizontalAlignment="Stretch" Height="120">
-                <TextBlock>Select Shape</TextBlock>
-            </Button>
-            <GridView Grid.Row="1" Grid.Column="0">
-                <Image x:Name="brushShape"/>
+                    <TextBlock>Select Shape</TextBlock>
+                </Button>
+            </Grid>
+            <GridView Grid.Row="1" 
+                      Margin="0 0 0 10"
+                      Grid.Column="0">
+                <Image x:Name="brushShapeView"/>
             </GridView>          
         </Grid>
         <Grid Grid.Column="2" Grid.Row="1">
@@ -55,15 +61,29 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0"
+            <Grid Grid.Row="0"                     
                     Grid.Column="0" 
-                    HorizontalAlignment="Stretch" 
+                    Margin="0 0 0 10">
+                <Button HorizontalAlignment="Stretch" 
+                        Click="PickBrushGrain"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Height="120">
-                <TextBlock>Select Grain</TextBlock>
-            </Button>
-            <GridView Grid.Row="1"  Grid.Column="0"></GridView>
+                    <TextBlock>Select Grain</TextBlock>
+                </Button>
+            </Grid>
+            
+            <GridView Grid.Row="1"  
+                      Margin="0 0 0 10"
+                      Grid.Column="0">
+                <Image x:Name="brushGrainView"/>
+            </GridView>
         </Grid>
+
+
+
+        <GridView Grid.ColumnSpan="3" Grid.Row="2">
+            <Image x:Name="brushView"/>
+        </GridView>
     </Grid>
 </Page>

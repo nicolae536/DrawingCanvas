@@ -56,4 +56,9 @@ namespace winrt::DrawingCanvas::implementation
             //args.DrawingSession().DrawGeometry
         //}
     }
+
+    void CanvasBoard::OpenMenu(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
+    {
+        configPanel().IsPaneOpen(!configPanel().IsPaneOpen());
+    }
 }

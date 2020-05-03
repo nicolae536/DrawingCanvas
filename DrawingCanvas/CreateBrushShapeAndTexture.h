@@ -2,6 +2,7 @@
 
 #include "CreateBrushShapeAndTexture.g.h"
 #include "FilePicker.h"
+#include "CanvasBrush.h"
 
 namespace winrt::DrawingCanvas::implementation
 {
@@ -11,9 +12,10 @@ namespace winrt::DrawingCanvas::implementation
         CreateBrushShapeAndTexture();
     private:
         PlatformServices::FilePicker filePicker;
-
+        Rendering::CanvasBrush brush;
     public:
-        winrt::Windows::Foundation::IAsyncAction PickFile(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+        winrt::Windows::Foundation::IAsyncAction PickBrushShape(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+        winrt::Windows::Foundation::IAsyncAction PickBrushGrain(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);       
     };
 }
 

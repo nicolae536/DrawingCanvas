@@ -4,46 +4,65 @@
 #include <math.h>
 
 Rendering::CanvasBrush::CanvasBrush()
-	: width(20.0f),
-	height(20.0f),
-	penTip(PenTip::Pencil),
-	penTipShape(PenTipShape::Circle),
-	radius(width / 2),
-	color(winrt::Windows::UI::Colors::Black())
 {
 }
 
 void Rendering::CanvasBrush::Draw(Rendering::CanvasPoint const& point, winrt::Microsoft::Graphics::Canvas::CanvasDrawingSession const& ds)
 {
-	//float density = 30;
-	//float densityGap = radius * 2 * density / 100;
+}
 
+void Rendering::CanvasBrush::ShapeBitmap(winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap const& originBitmap)
+{
+	brushSource.SetBitmap(originBitmap);
+	brushSource.ConvertToGrayScale();
+	CombineShapeAndGrain();
+}
 
-	//
-	//ds.DrawGradientMesh()
+void Rendering::CanvasBrush::GrainBitmap(winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap const& originBitmap)
+{
+	brushGrain.SetBitmap(originBitmap);
+	brushGrain.ConvertToGrayScale();
+	CombineShapeAndGrain();
+}
 
-	////if (penTipShape == PenTipShape::Circle) {
-	//	auto maxX = point.X() + radius;
-	//	auto minX = point.X() - radius;
-	//	auto maxY = point.Y() + radius;
-	//	auto minY = point.Y() - radius;
+winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap Rendering::CanvasBrush::ShapeBitmap() const
+{
+	return brushSource.Bitmap();
+}
 
-	//	auto i = minX;
-	//	auto j = minY;	
+winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap Rendering::CanvasBrush::GrainBitmap() const
+{
+	return brushGrain.Bitmap();
+}
 
-	//	// TODO Reasearch math function which defines
-	//	// makes a gradient over a surface but similar with a pencil
-	//	while (i < maxX && j < maxY)
-	//	{
-	//		auto distanceToPoint = std::sqrt(std::pow((i - point.X()), 2) + std::pow((j - point.Y()), 2));
-	//		if (distanceToPoint < radius) {
-	//			ds.FillCircle(i, j, 1, color);
-	//		}
-	//		i += densityGap;
-	//		if (i > maxX) {
-	//			j += densityGap;
-	//			i = minX;
-	//		}
-	//	}
-	//}
+winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap Rendering::CanvasBrush::Texture() const
+{
+	return brushTexture.Bitmap();
+}
+
+void Rendering::CanvasBrush::CombineShapeAndGrain()
+{
+	if (!brushSource.IsBitmapSet() || !brushGrain.IsBitmapSet()) {
+		return;
+	}
+
+	brushTexture = {
+		brushSource.Bitmap(),
+		brushSource.PixelFormat(),
+		brushSource.AlphaMode()
+	};
+
+	auto brushIt = brushTexture.begin();
+	auto grainIt = brushGrain.begin();
+
+	while (brushIt != brushTexture.end() && grainIt != brushGrain.end())
+	{
+		if (brushIt.A() != 0) {
+			brushIt.R(grainIt.R());
+			brushIt.G(grainIt.G());
+			brushIt.B(grainIt.B());
+			grainIt++;
+		}
+		brushIt++;
+	}
 }

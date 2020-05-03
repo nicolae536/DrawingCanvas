@@ -23,28 +23,35 @@
                 <Grid Grid.Column="1" HorizontalAlignment="Right">
                     <Button Padding="0" 
                             x:Name="PopupTrigger"
+                            Click="OpenMenu"
                             Width="40" 
-                            Height="40">
+                            Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                         <Image Source="Assets\dc_brush.svg"></Image>
-                        <Button.Flyout>
-                            <Flyout>
-                                <StackPanel Orientation="Vertical">
-                                    <local:BrushFlayoutMenu Background="Red" 
-                                                    Canvas.ZIndex="100"></local:BrushFlayoutMenu>
-                                </StackPanel>
-                            </Flyout>
-                        </Button.Flyout>
                     </Button>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Background="White">
-                <ScrollViewer>
-                    <canvas:CanvasControl x:Name="canvasControl"                                                   
+                <SplitView IsPaneOpen="False"
+                           x:Name="configPanel"
+                           PanePlacement="Right"
+                           DisplayMode="Inline"
+                           OpenPaneLength="400">
+                    <SplitView.Pane>
+                        <StackPanel Orientation="Vertical">
+                            <local:BrushFlayoutMenu Background="Red" 
+                                                    Canvas.ZIndex="100"></local:BrushFlayoutMenu>
+                        </StackPanel>
+                    </SplitView.Pane>
+
+
+                    <ScrollViewer>
+                        <canvas:CanvasControl x:Name="canvasControl"                                                   
                                           Draw="CanvasControl_Draw"
                                           PointerPressed="CanvasControl_PointerPressed" 
                                           PointerMoved="CanvasControl_PointerMoved"
                                           PointerReleased="CanvasControl_PointerReleased"/>
-                </ScrollViewer>
+                    </ScrollViewer>
+                </SplitView>
             </Grid>
         </Grid>
     </Grid>

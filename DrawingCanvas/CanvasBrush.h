@@ -1,31 +1,30 @@
 #pragma once
 #include "CanvasPoint.h"
+#include "BrushImagePart.h"
 
 namespace Rendering {
-	enum PenTip {
-		Pencil = 0,
-		Brush = 1,
-	};
-
-	enum PenTipShape {
-		Circle = 0,
-		Rectangle = 1,
-	};
-
 	class CanvasBrush
 	{
 	public:
 		CanvasBrush();
 
 		void Draw(Rendering::CanvasPoint const& point, winrt::Microsoft::Graphics::Canvas::CanvasDrawingSession const& ds);
-	private:
-		float width;
-		float height;
-		float radius;
-		winrt::Windows::UI::Color color;
 
-		PenTip penTip;
-		PenTipShape penTipShape;
+		void ShapeBitmap(winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap const& originBitmap);
+
+		void GrainBitmap(winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap const& originBitmap);
+
+		winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap ShapeBitmap() const;
+
+		winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap GrainBitmap() const;
+
+		winrt::Windows::UI::Xaml::Media::Imaging::WriteableBitmap Texture() const;
+	private:
+		void CombineShapeAndGrain();
+	private:
+		BrushImagePart brushSource;
+		BrushImagePart brushGrain;
+		BrushImagePart brushTexture;
 	};
 }
 
